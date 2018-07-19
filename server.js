@@ -37,7 +37,7 @@ io.on('connection', function (socket) {
         var userData = clientInfo[socket.id];
         if (typeof userData !== 'undefined') {
             socket.leave(userData.room);
-            io.to().emit('message', {
+            io.to(userData.room).emit('message', {
                 name: 'System',
                 timeStamp: moment().valueOf,
                 text: userData.name + ' has left!!'
